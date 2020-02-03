@@ -1,6 +1,8 @@
 package xdml;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import xdml.dao.UserMapper;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +12,7 @@ import java.util.Map;
 
 @RestController
 public class HelloController {
+    @Autowired UserMapper userMapper;
 
     @RequestMapping("/search")
     public String search(@RequestParam("q")String searchKeyword,
@@ -46,4 +49,10 @@ public class HelloController {
         result.put("b","bbbbb");
         return result;
     }
+
+    @RequestMapping("/getUserById")
+    public Object getUserById(@RequestParam("id")Integer id){
+          return userMapper.getUserById(id);
+    }
+
 }

@@ -8,6 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
+//1. 在Spring容器中引入Bean
+//2. Spring + MyBatis（H2/MySQL/Postgres）
+//3. 模板引擎
+//4. 前后端分离和后端渲染
 @SpringBootApplication
 public class Application {
 
