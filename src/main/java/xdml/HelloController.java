@@ -3,6 +3,7 @@ package xdml;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import xdml.dao.UserMapper;
+import xdml.service.RankService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,7 +13,11 @@ import java.util.Map;
 
 @RestController
 public class HelloController {
-    @Autowired UserMapper userMapper;
+    @Autowired
+    UserMapper userMapper;
+
+    @Autowired
+    RankService rankService;
 
     @RequestMapping("/search")
     public String search(@RequestParam("q")String searchKeyword,
@@ -53,6 +58,11 @@ public class HelloController {
     @RequestMapping("/getUserById")
     public Object getUserById(@RequestParam("id")Integer id){
           return userMapper.getUserById(id);
+    }
+
+    @RequestMapping("/getRank")
+    public Object getRank(){
+        return rankService.getRank();
     }
 
 }
