@@ -2,13 +2,16 @@ package xdml;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import xdml.dao.UserMapper;
+import xdml.entity.RankItem;
 import xdml.service.RankService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -64,4 +67,12 @@ public class HelloController {
         return rankService.getRank();
     }
 
+    @RequestMapping("/getDataByFreeMaker")
+    public ModelAndView getDataByFreeMaker(){
+        List<RankItem> items = rankService.getRank();
+        HashMap<String,Object> model = new HashMap<>();
+        model.put("rankItems",items);
+        //index是resources/templates/index.ftlh文件
+        return new ModelAndView("index",model);
+    }
 }
