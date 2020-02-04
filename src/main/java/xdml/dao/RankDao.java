@@ -12,7 +12,7 @@ public class RankDao {
     @Autowired
     private SqlSession sqlSession;
 
-    public List<RankItem> getRank(){
+    public List<RankItem> getRank() {
         return sqlSession.selectList("MyMapper.selectRank");
     }
 }

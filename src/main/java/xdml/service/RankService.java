@@ -16,7 +16,7 @@ public class RankService {
     @Autowired
     private RankDao rankDao;
 
-    public List<RankItem> getRank(){
+    public List<RankItem> getRank() {
         return rankDao.getRank();
     }
 }
