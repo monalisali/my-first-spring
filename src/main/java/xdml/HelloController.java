@@ -75,4 +75,9 @@ public class HelloController {
         //index是resources/templates/index.ftlh文件
         return new ModelAndView("index",model);
     }
+
+    @RequestMapping("/getRankItemByJS")
+    public List<RankItem> getRankItemByJS(){
+        return rankService.getRank();
+    }
 }
